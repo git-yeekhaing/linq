@@ -12,6 +12,11 @@ namespace LinqBasics
     {
         static void Main(string[] args)
         {
+            string sentence = "Welcome to Dotnet Tutorials";
+            int wordCount = sentence.GetWordCount();
+            Console.WriteLine($"Count : {wordCount}");
+            Console.WriteLine("\n==============================");
+
             LinqQuerySyntax();
             Console.WriteLine("\n==============================");
 
@@ -148,8 +153,6 @@ namespace LinqBasics
             //Execution
             Console.Write("Sum Is : " + mixsyntax);
         }
-
-
     }
 
     public class Student
