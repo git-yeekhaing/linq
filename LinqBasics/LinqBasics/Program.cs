@@ -17,6 +17,29 @@ namespace LinqBasics
             LinqSelectOperator();
             Console.WriteLine("\n==============================");
 
+            // Example2:
+            LinqSelectOperatorEx2();
+            Console.WriteLine("\n==============================");
+
+            // Example3:
+            LinqSelectOperatorEx3();
+            Console.WriteLine("\n==============================");
+
+            // Example4:
+            LinqSelectOperatorEx4();
+            Console.WriteLine("\n==============================");
+
+            // Example5:
+            LinqSelectOperatorEx5();
+            Console.WriteLine("\n==============================");
+
+            // Example6:
+            LinqSelectOperatorEx6();
+            Console.WriteLine("\n==============================");
+
+            // Example7:
+            LinqSelectOperatorEx7();
+            Console.WriteLine("\n==============================");
 
             string sentence = "Welcome to Dotnet Tutorials";
             int wordCount = sentence.GetWordCount();
@@ -43,6 +66,184 @@ namespace LinqBasics
             Console.WriteLine("\n==============================");
 
             Console.ReadKey();
+        }
+
+        private static void LinqSelectOperatorEx7()
+        {
+            // QuerySyntax
+            var query = (from emp in Employee.GetEmployees()
+                         .Select((value, index) => new { value, index })
+                         select new
+                         {
+                             IndexPosition = emp.index,
+                             FullName = emp.value.FirstName + " " + emp.value.LastName,
+                             Salary = emp.value.Salary
+                         }).ToList();
+
+            foreach (var emp in query)
+            {
+                Console.WriteLine($" Position {emp.IndexPosition} Name : {emp.FullName} Salary : {emp.Salary} ");
+            }
+
+            // Method Syntax
+            var selectMethod = Employee.GetEmployees().
+                                        Select((emp, index) => new
+                                        {
+                                            IndexPosition = index,
+                                            FullName = emp.FirstName + " " + emp.LastName,
+                                            Salary = emp.Salary
+                                        });
+
+            foreach (var emp in selectMethod)
+            {
+                Console.WriteLine($" Position {emp.IndexPosition} Name : {emp.FullName} Salary : {emp.Salary} ");
+            }
+        }
+
+        private static void LinqSelectOperatorEx6()
+        {
+            // Query Syntax
+            var selectQuery = (from emp in Employee.GetEmployees()
+                               select new
+                               {
+                                   EmployeeId = emp.ID,
+                                   FullName = emp.FirstName + " " + emp.LastName,
+                                   AnnualSalary = emp.Salary * 12
+                               });
+
+            foreach (var emp in selectQuery)
+            {
+                Console.WriteLine($" ID {emp.EmployeeId} Name : {emp.FullName} Annual Salary : {emp.AnnualSalary} ");
+            }
+
+            // Method Syntax
+            var selectMethod = Employee.GetEmployees()
+                .Select(emp => new
+                {
+                    EmployeeId = emp.ID,
+                    FullName = emp.FirstName + " " + emp.LastName,
+                    AnnualSalary = emp.Salary * 12
+                });
+
+            foreach (var emp in selectMethod)
+            {
+                Console.WriteLine($" ID {emp.EmployeeId} Name : {emp.FullName} Annual Salary : {emp.AnnualSalary} ");
+            }
+        }
+
+        private static void LinqSelectOperatorEx5()
+        {
+            // Query Syntax
+            var selectQuery = (from emp in Employee.GetEmployees()
+                               select new
+                               {
+                                    FirstName = emp.FirstName,
+                                    LastName = emp.LastName,
+                                    Salary = emp.Salary
+                               });
+
+            foreach (var emp in selectQuery)
+            {
+                Console.WriteLine($" Name : {emp.FirstName} {emp.LastName} Salary : {emp.Salary} ");
+            }
+
+            // Method Syntax
+            var selectMethod = Employee.GetEmployees()
+                .Select(emp => new
+                {
+                    FirstName = emp.FirstName,
+                    LastName = emp.LastName,
+                    Salary = emp.Salary
+                });
+
+            foreach (var emp in selectMethod)
+            {
+                Console.WriteLine($" Name : {emp.FirstName} {emp.LastName} Salary : {emp.Salary} ");
+            }
+        }
+
+        private static void LinqSelectOperatorEx4()
+        {
+            // Query Syntax
+            IEnumerable<EmployeeBasicInfo> selectQuery = (from emp in Employee.GetEmployees()
+                                                          select new EmployeeBasicInfo()
+                                                          {
+                                                              FirstName = emp.FirstName,
+                                                              LastName = emp.LastName,
+                                                              Salary = emp.Salary
+                                                          });
+
+            foreach (var emp in selectQuery)
+            {
+                Console.WriteLine($" Name : {emp.FirstName} {emp.LastName} Salary : {emp.Salary} ");
+            }
+
+            // Method Syntax
+            List<EmployeeBasicInfo> selectMethod = Employee.GetEmployees()
+                .Select(emp => new EmployeeBasicInfo()
+                {
+                    FirstName = emp.FirstName,
+                    LastName = emp.LastName,
+                    Salary = emp.Salary
+                }).ToList();
+
+            foreach (var emp in selectMethod)
+            {
+                Console.WriteLine($" Name : {emp.FirstName} {emp.LastName} Salary : {emp.Salary} ");
+            }
+        }
+
+        private static void LinqSelectOperatorEx3()
+        {
+            // Query Syntax
+            IEnumerable<Employee> selectQuery = (from emp in Employee.GetEmployees()
+                                                 select new Employee()
+                                                 {
+                                                     FirstName = emp.FirstName,
+                                                     LastName = emp.LastName,
+                                                     Salary = emp.Salary
+                                                 }) ;
+
+            foreach (var emp in selectQuery)
+            {
+                Console.WriteLine($" Name : {emp.FirstName} {emp.LastName} Salary : {emp.Salary} ");
+            }
+
+            // Method Syntax
+            List<Employee> selectMethod = Employee.GetEmployees()
+                .Select(emp => new Employee()
+                {
+                    FirstName = emp.FirstName,
+                    LastName = emp.LastName,
+                    Salary = emp.Salary
+                }).ToList();
+
+            foreach (var emp in selectMethod)
+            {
+                Console.WriteLine($" Name : {emp.FirstName} {emp.LastName} Salary : {emp.Salary} ");
+            }
+        }
+
+        private static void LinqSelectOperatorEx2()
+        {
+            // Query syntax
+            List<int> basicPropQuery = (from emp in Employee.GetEmployees()
+                                        select emp.ID).ToList();
+
+            foreach (var id in basicPropQuery)
+            {
+                Console.WriteLine($"ID : {id}");
+            }
+
+            Console.WriteLine("\n==============================");
+            // Method Syntax
+            IEnumerable<int> basicPropMethod = Employee.GetEmployees()
+                .Select(emp => emp.ID);
+
+            foreach (var id in basicPropMethod)
+            {
+                Console.WriteLine($"ID : {id}");
+            }
         }
 
         private static void LinqSelectOperator()
