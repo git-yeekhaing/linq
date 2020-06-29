@@ -12,6 +12,12 @@ namespace LinqBasics
     {
         static void Main(string[] args)
         {
+            // Example1:
+            // Select all the data from the data source using both Method and Query Syntax.
+            LinqSelectOperator();
+            Console.WriteLine("\n==============================");
+
+
             string sentence = "Welcome to Dotnet Tutorials";
             int wordCount = sentence.GetWordCount();
             Console.WriteLine($"Count : {wordCount}");
@@ -37,6 +43,26 @@ namespace LinqBasics
             Console.WriteLine("\n==============================");
 
             Console.ReadKey();
+        }
+
+        private static void LinqSelectOperator()
+        {
+            // Query syntax
+            List<Employee> basicQuery = (from emp in Employee.GetEmployees()
+                                         select emp).ToList();
+
+            foreach (Employee emp in basicQuery)
+            {
+                Console.WriteLine($"ID : {emp.ID} Name : {emp.FirstName} {emp.LastName}");
+            }
+            Console.WriteLine("\n==============================");
+
+            // Method Syntax
+            IEnumerable<Employee> basicMethod = Employee.GetEmployees().ToList();
+            foreach (Employee emp in basicMethod)
+            {
+                Console.WriteLine($"ID : {emp.ID} Name : {emp.FirstName} {emp.LastName}");
+            }
         }
 
         private static void IEnumerableSyntax()
