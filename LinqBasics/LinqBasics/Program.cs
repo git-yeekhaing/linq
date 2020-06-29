@@ -12,6 +12,22 @@ namespace LinqBasics
     {
         static void Main(string[] args)
         {
+            #region SelectMany
+
+            SelectManyExample1();
+            Console.WriteLine("\n==============================");
+
+            SelectManyExample1WithQuery();
+            Console.WriteLine("\n==============================");
+
+            SelectManyExample2();
+            Console.WriteLine("\n==============================");
+
+
+            #endregion
+
+            /*
+            #region Select Operator
             // Example1:
             // Select all the data from the data source using both Method and Query Syntax.
             LinqSelectOperator();
@@ -41,6 +57,9 @@ namespace LinqBasics
             LinqSelectOperatorEx7();
             Console.WriteLine("\n==============================");
 
+            #endregion
+
+            #region LinqBasic
             string sentence = "Welcome to Dotnet Tutorials";
             int wordCount = sentence.GetWordCount();
             Console.WriteLine($"Count : {wordCount}");
@@ -64,8 +83,57 @@ namespace LinqBasics
 
             IQueryableWithComplexType();
             Console.WriteLine("\n==============================");
-
+            #endregion
+            */
             Console.ReadKey();
+        }
+
+        private static void SelectManyExample2()
+        {
+            // method syntax
+            List<string> MethodSyntax = Student.GetStudents().SelectMany(
+                std => std.Programming).ToList();
+
+            // query sytax
+            IEnumerable<string> QuerySyntax = from std in Student.GetStudents()
+                                              from program in std.Programming
+                                              select program;
+
+            // Printing the values
+            foreach (string program in MethodSyntax)
+            {
+                Console.WriteLine(program);
+            }
+        }
+
+        private static void SelectManyExample1WithQuery()
+        {
+            List<string> nameList = new List<string>() { "Pranaya", "Kumar" };
+
+            IEnumerable<char> querySyntax = from str in nameList
+                                            from ch in str
+                                            select ch;
+
+            foreach (char c in querySyntax)
+            {
+                Console.Write(c + " ");
+            }
+        }
+
+        private static void SelectManyExample1()
+        {
+            List<string> nameList = new List<string>()
+            {
+                "Pranaya", "Kumar"
+            };
+
+            IEnumerable<char> methodSyntax = nameList.SelectMany(
+                x => x);
+
+            foreach (char c in methodSyntax)
+            {
+                Console.Write(c + " ");
+            }
         }
 
         private static void LinqSelectOperatorEx7()
@@ -386,6 +454,19 @@ namespace LinqBasics
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public string Email { get; set; }
+        public List<string> Programming { get; set; }
         public string Gender { get; set; }
+
+        public static List<Student> GetStudents()
+        {
+            return new List<Student>()
+            {
+                new Student(){ID = 1, Name = "James", Email = "James@j.com", Programming = new List<string>() { "C#", "Jave", "C++"} },
+                new Student(){ID = 2, Name = "Sam", Email = "Sara@j.com", Programming = new List<string>() { "WCF", "SQL Server", "C#" }},
+                new Student(){ID = 3, Name = "Patrik", Email = "Patrik@j.com", Programming = new List<string>() { "MVC", "Jave", "LINQ"} },
+                new Student(){ID = 4, Name = "Sara", Email = "Sara@j.com", Programming = new List<string>() { "ADO.NET", "C#", "LINQ" } }
+            };
+        }
     }
 }
