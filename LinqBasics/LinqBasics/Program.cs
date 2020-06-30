@@ -25,6 +25,17 @@ namespace LinqBasics
             FilterOperator2WithQuery();
             Console.WriteLine("\n==============================");
 
+            LinqComplexFilter.GetEmpWithSalaryOver50000();
+            Console.WriteLine("\n==============================");
+
+            LinqComplexFilter.GetEmpWithMaleSalaryOver50000();
+            Console.WriteLine("\n==============================");
+
+            LinqComplexFilter.GetComplexType();
+            Console.WriteLine("\n==============================");
+
+            LinqComplexFilter.FetchElementWithIndexPos();
+            Console.WriteLine("\n==============================");
             #endregion
 
             #region SelectMany
