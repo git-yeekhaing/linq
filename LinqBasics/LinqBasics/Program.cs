@@ -12,8 +12,23 @@ namespace LinqBasics
     {
         static void Main(string[] args)
         {
-            #region SelectMany
+            #region Filter
+            FilterOperator();
+            Console.WriteLine("\n==============================");
 
+            FilterGenericDelegate();
+            Console.WriteLine("\n==============================");
+
+            FilterOperator2();
+            Console.WriteLine("\n==============================");
+
+            FilterOperator2WithQuery();
+            Console.WriteLine("\n==============================");
+
+            #endregion
+
+            #region SelectMany
+            /*
             SelectManyExample1();
             Console.WriteLine("\n==============================");
 
@@ -28,8 +43,9 @@ namespace LinqBasics
 
             SelectManyExample4();
             Console.WriteLine("\n==============================");
-            #endregion
 
+            */
+            #endregion
 
             #region Select Operator
             /*
@@ -93,6 +109,89 @@ namespace LinqBasics
             #endregion
 
             Console.ReadKey();
+        }
+
+        private static void FilterOperator2WithQuery()
+        {
+            List<int> intList = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            // query syntax
+            var OddNumberWithIndexPosition = from num in intList
+                                             .Select((num, index) =>
+                                             new { Numbers = num, IndexPostion = index })
+                                             where num.Numbers % 2 != 0
+                                             select new
+                                             {
+                                                 Number = num.Numbers,
+                                                 IndexPosition = num.IndexPostion
+                                             };
+        }
+
+        //Here we need to filter only the odd numbers i.e. 
+        //the numbers which are not divisible by 2.
+        //Along with the numbers we also need to fetch the index position of the number. The index is 0 based.
+        private static void FilterOperator2()
+        {
+            List<int> intList = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            // Method syntax
+            var OddNumbersWithIndexPosition = intList.Select((num, index) => 
+            new
+            {
+                Numbers = num,
+                IndexPositon = index
+            }).Where(x => x.Numbers % 2 != 0)
+            .Select(data => new
+            {
+                Number = data.Numbers,
+                IndexPosition = data.IndexPositon
+            });
+
+            foreach (var item in OddNumbersWithIndexPosition)
+            {
+                Console.WriteLine($"IndexPosition :{item.IndexPosition} , Value : {item.Number}");
+            }
+        }
+
+        private static void FilterGenericDelegate()
+        {
+            List<int> intList = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            // method syntax
+            IEnumerable<int> filterData = intList.Where(num => CheckNumber(num));
+
+            foreach (int number in filterData)
+            {
+                Console.WriteLine(number);
+            }
+        }
+
+        public static bool CheckNumber(int number)
+        {
+            if (number > 5)
+            {
+                return true;
+            }
+
+            return false;
+        }             
+
+        private static void FilterOperator()
+        {
+            List<int> intList = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            // method syntax
+            IEnumerable<int> filteredData = intList.Where(num => num > 5);
+
+            // query syntax
+            IEnumerable<int> filterResult = from num in intList
+                                            where num > 5
+                                            select num;
+
+            foreach (int number in filteredData)
+            {
+                Console.WriteLine(number);
+            }
         }
 
         // Now we need to retrieve the student name along with the program language name
