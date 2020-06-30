@@ -23,69 +23,123 @@ namespace LinqBasics
             SelectManyExample2();
             Console.WriteLine("\n==============================");
 
+            SelectManyExample3();
+            Console.WriteLine("\n==============================");
 
+            SelectManyExample4();
+            Console.WriteLine("\n==============================");
             #endregion
 
-            /*
+
             #region Select Operator
-            // Example1:
-            // Select all the data from the data source using both Method and Query Syntax.
-            LinqSelectOperator();
-            Console.WriteLine("\n==============================");
+            /*
+          // Example1:
+          // Select all the data from the data source using both Method and Query Syntax.
+          LinqSelectOperator();
+          Console.WriteLine("\n==============================");
 
-            // Example2:
-            LinqSelectOperatorEx2();
-            Console.WriteLine("\n==============================");
+          // Example2:
+          LinqSelectOperatorEx2();
+          Console.WriteLine("\n==============================");
 
-            // Example3:
-            LinqSelectOperatorEx3();
-            Console.WriteLine("\n==============================");
+          // Example3:
+          LinqSelectOperatorEx3();
+          Console.WriteLine("\n==============================");
 
-            // Example4:
-            LinqSelectOperatorEx4();
-            Console.WriteLine("\n==============================");
+          // Example4:
+          LinqSelectOperatorEx4();
+          Console.WriteLine("\n==============================");
 
-            // Example5:
-            LinqSelectOperatorEx5();
-            Console.WriteLine("\n==============================");
+          // Example5:
+          LinqSelectOperatorEx5();
+          Console.WriteLine("\n==============================");
 
-            // Example6:
-            LinqSelectOperatorEx6();
-            Console.WriteLine("\n==============================");
+          // Example6:
+          LinqSelectOperatorEx6();
+          Console.WriteLine("\n==============================");
 
-            // Example7:
-            LinqSelectOperatorEx7();
-            Console.WriteLine("\n==============================");
+          // Example7:
+          LinqSelectOperatorEx7();
+          Console.WriteLine("\n==============================");
 
-            #endregion
+          #endregion
 
-            #region LinqBasic
-            string sentence = "Welcome to Dotnet Tutorials";
-            int wordCount = sentence.GetWordCount();
-            Console.WriteLine($"Count : {wordCount}");
-            Console.WriteLine("\n==============================");
+          #region LinqBasic
+          string sentence = "Welcome to Dotnet Tutorials";
+          int wordCount = sentence.GetWordCount();
+          Console.WriteLine($"Count : {wordCount}");
+          Console.WriteLine("\n==============================");
 
-            LinqQuerySyntax();
-            Console.WriteLine("\n==============================");
+          LinqQuerySyntax();
+          Console.WriteLine("\n==============================");
 
-            LinqMethodSyntax();
-            Console.WriteLine("\n==============================");
+          LinqMethodSyntax();
+          Console.WriteLine("\n==============================");
 
-            LinqMixedSyntax();
-            Console.WriteLine("\n==============================");
+          LinqMixedSyntax();
+          Console.WriteLine("\n==============================");
 
-            IEnumerableSyntax();
-            Console.WriteLine("\n==============================");
+          IEnumerableSyntax();
+          Console.WriteLine("\n==============================");
 
-            // C# IEnumerable with complex type
-            IEnumerableWithComplexType();
-            Console.WriteLine("\n==============================");
+          // C# IEnumerable with complex type
+          IEnumerableWithComplexType();
+          Console.WriteLine("\n==============================");
 
-            IQueryableWithComplexType();
-            Console.WriteLine("\n==============================");
-            #endregion
+          IQueryableWithComplexType();
+          Console.WriteLine("\n==============================");
+
             */
+            #endregion
+
             Console.ReadKey();
+        }
+
+        // Now we need to retrieve the student name along with the program language name
+        private static void SelectManyExample4()
+        {
+            // method syntax
+            var methodSyntax = Student.GetStudents()
+                .SelectMany(std => std.Programming,
+                (student, program) => new
+                {
+                    StudentName = student.Name,
+                    ProgrammingName = program
+                }).ToList();
+
+            // query syntax
+            var querySyntax = (from std in Student.GetStudents()
+                               from program in std.Programming
+                               select new
+                               {
+                                   StudentName = std.Name,
+                                   ProgramName = program
+                               }).ToList();
+
+            //Printing the values
+            foreach (var item in querySyntax)
+            {
+                Console.WriteLine(item.StudentName + " => " + item.ProgramName);
+            }
+        }
+
+        private static void SelectManyExample3()
+        {
+            // method syntax
+            List<string> methodSyntax = Student.GetStudents()
+                .SelectMany(std => std.Programming)
+                .Distinct().ToList();
+
+            // query syntax
+            IEnumerable<string> querySyntax = (from std in Student.GetStudents()
+                                               from program in std.Programming
+                                               select program).Distinct().ToList() ;
+            
+            //Printing the values
+            foreach (string program in querySyntax)
+            {
+                Console.WriteLine(program);
+            }
         }
 
         private static void SelectManyExample2()
