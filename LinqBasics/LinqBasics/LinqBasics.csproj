@@ -47,6 +47,7 @@
     <Compile Include="EmployeeBasicInfo.cs" />
     <Compile Include="ExtensionHelper.cs" />
     <Compile Include="LinqComplexFilter.cs" />
+    <Compile Include="OfTypeOperator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

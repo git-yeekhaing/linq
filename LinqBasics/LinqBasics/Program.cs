@@ -12,7 +12,16 @@ namespace LinqBasics
     {
         static void Main(string[] args)
         {
+            #region OfType Operator in LINQ
+
+            OfTypeOperator.ExampleOne();
+            OfTypeOperator.ExampleTwo();
+            OfTypeOperator.ExampleThree();
+            #endregion
+
+
             #region Filter
+            /*
             FilterOperator();
             Console.WriteLine("\n==============================");
 

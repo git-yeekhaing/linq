@@ -103,7 +103,7 @@ namespace LinqBasics
                 Console.WriteLine($"Name : {emp.EmpName}, Gender : {emp.Gender}, Monthly Salary : {emp.MonthlySalary}");
             }
         }
-    
+        
         public static void FetchElementWithIndexPos()
         {
             // query syntax
