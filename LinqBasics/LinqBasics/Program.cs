@@ -12,13 +12,21 @@ namespace LinqBasics
     {
         static void Main(string[] args)
         {
-            #region OfType Operator in LINQ
+            #region Linq Set Operators
+            LinqSetOperator.LinqDistinctMethod();
+            LinqSetOperator.LinqDistinctMethod2();
+            LinqSetOperator.LinqDistinctMethod3();
+            LinqSetOperator.LinqDistinctWithComplexType();
+            LinqSetOperator.LinqDistinctWithComplexType2();
+            #endregion
 
+            #region OfType Operator in LINQ
+            /*
             OfTypeOperator.ExampleOne();
             OfTypeOperator.ExampleTwo();
             OfTypeOperator.ExampleThree();
+            */
             #endregion
-
 
             #region Filter
             /*
@@ -45,6 +53,7 @@ namespace LinqBasics
 
             LinqComplexFilter.FetchElementWithIndexPos();
             Console.WriteLine("\n==============================");
+            */
             #endregion
 
             #region SelectMany
@@ -97,10 +106,11 @@ namespace LinqBasics
           // Example7:
           LinqSelectOperatorEx7();
           Console.WriteLine("\n==============================");
+            */
+            #endregion
 
-          #endregion
-
-          #region LinqBasic
+            #region LinqBasic
+            /*
           string sentence = "Welcome to Dotnet Tutorials";
           int wordCount = sentence.GetWordCount();
           Console.WriteLine($"Count : {wordCount}");
