@@ -24,5 +24,20 @@ namespace LinqBasics
             };
             return students;
         }
+
+        public override int GetHashCode()
+        {
+            int IDHashCode = this.ID.GetHashCode();
+
+            int NameHashCode = this.Name == null ? 0 : this.Name.GetHashCode();
+
+            return IDHashCode ^ NameHashCode;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.ID == ((Student2)obj).ID &&
+                this.Name == ((Student2)obj).Name;
+        }
     }
 }

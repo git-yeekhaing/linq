@@ -43,16 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DistinctOperator.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeBasicInfo.cs" />
     <Compile Include="ExtensionHelper.cs" />
     <Compile Include="LinqComplexFilter.cs" />
+    <Compile Include="LinqExcept.cs" />
     <Compile Include="LinqSetOperator.cs" />
     <Compile Include="OfTypeOperator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="StudentComparer.cs" />
+    <Compile Include="StudentComparer2.cs" />
+    <Compile Include="StudentComparer3.cs" />
+    <Compile Include="StudentExcept.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

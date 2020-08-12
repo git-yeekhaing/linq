@@ -12,13 +12,29 @@ namespace LinqBasics
     {
         static void Main(string[] args)
         {
-            #region Linq Set Operators
-            LinqSetOperator.LinqDistinctMethod();
-            LinqSetOperator.LinqDistinctMethod2();
-            LinqSetOperator.LinqDistinctMethod3();
-            LinqSetOperator.LinqDistinctWithComplexType();
-            LinqSetOperator.LinqDistinctWithComplexType2();
+            #region Except
+            LinqExcept.Example1();
+            LinqExcept.Example2();
+            LinqExcept.Example3();
             #endregion
+
+            //#region Linq Distinct Operators
+            //DistinctOperator.OnValueType();            
+            //DistinctOperator.OnStringType();
+            //DistinctOperator.OnStringCaseSensitive();
+            //DistinctOperator.OnObjDistinct();
+            //DistinctOperator.OnIEqualityComparer();
+            //DistinctOperator.OnOverrideCompare();
+            //#endregion
+
+            /* #region Linq Set Operators
+             LinqSetOperator.LinqDistinctMethod();
+             LinqSetOperator.LinqDistinctMethod2();
+             LinqSetOperator.LinqDistinctMethod3();
+             LinqSetOperator.LinqDistinctWithComplexType();
+             LinqSetOperator.LinqDistinctWithComplexType2();
+             #endregion
+            */
 
             #region OfType Operator in LINQ
             /*
