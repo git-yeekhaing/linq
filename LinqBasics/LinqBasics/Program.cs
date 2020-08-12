@@ -13,11 +13,18 @@ namespace LinqBasics
         static void Main(string[] args)
         {
             //IntersectExample();
-            OrderByExample();          
+            //OrderByExample();
+
+            OnLinqAggregate();
 
             Console.ReadKey();
         }
 
+        private static void OnLinqAggregate()
+        {
+            LinqAggregate.Example1();
+            LinqAggregate.Example2();
+        }
       
         private static void IntersectExample()
         {
