@@ -14,10 +14,16 @@ namespace LinqBasics
         {
             //IntersectExample();
             //OrderByExample();
+            //OnLinqAggregate();
 
-            OnLinqAggregate();
+            OnGroupBy();
 
             Console.ReadKey();
+        }
+
+        private static void OnGroupBy()
+        {
+            LinqGroupBy.Example2();
         }
 
         private static void OnLinqAggregate()
