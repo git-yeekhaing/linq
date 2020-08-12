@@ -12,149 +12,29 @@ namespace LinqBasics
     {
         static void Main(string[] args)
         {
-            #region Except
-            LinqExcept.Example1();
-            LinqExcept.Example2();
-            LinqExcept.Example3();
-            #endregion
-
-            //#region Linq Distinct Operators
-            //DistinctOperator.OnValueType();            
-            //DistinctOperator.OnStringType();
-            //DistinctOperator.OnStringCaseSensitive();
-            //DistinctOperator.OnObjDistinct();
-            //DistinctOperator.OnIEqualityComparer();
-            //DistinctOperator.OnOverrideCompare();
-            //#endregion
-
-            /* #region Linq Set Operators
-             LinqSetOperator.LinqDistinctMethod();
-             LinqSetOperator.LinqDistinctMethod2();
-             LinqSetOperator.LinqDistinctMethod3();
-             LinqSetOperator.LinqDistinctWithComplexType();
-             LinqSetOperator.LinqDistinctWithComplexType2();
-             #endregion
-            */
-
-            #region OfType Operator in LINQ
-            /*
-            OfTypeOperator.ExampleOne();
-            OfTypeOperator.ExampleTwo();
-            OfTypeOperator.ExampleThree();
-            */
-            #endregion
-
-            #region Filter
-            /*
-            FilterOperator();
-            Console.WriteLine("\n==============================");
-
-            FilterGenericDelegate();
-            Console.WriteLine("\n==============================");
-
-            FilterOperator2();
-            Console.WriteLine("\n==============================");
-
-            FilterOperator2WithQuery();
-            Console.WriteLine("\n==============================");
-
-            LinqComplexFilter.GetEmpWithSalaryOver50000();
-            Console.WriteLine("\n==============================");
-
-            LinqComplexFilter.GetEmpWithMaleSalaryOver50000();
-            Console.WriteLine("\n==============================");
-
-            LinqComplexFilter.GetComplexType();
-            Console.WriteLine("\n==============================");
-
-            LinqComplexFilter.FetchElementWithIndexPos();
-            Console.WriteLine("\n==============================");
-            */
-            #endregion
-
-            #region SelectMany
-            /*
-            SelectManyExample1();
-            Console.WriteLine("\n==============================");
-
-            SelectManyExample1WithQuery();
-            Console.WriteLine("\n==============================");
-
-            SelectManyExample2();
-            Console.WriteLine("\n==============================");
-
-            SelectManyExample3();
-            Console.WriteLine("\n==============================");
-
-            SelectManyExample4();
-            Console.WriteLine("\n==============================");
-
-            */
-            #endregion
-
-            #region Select Operator
-            /*
-          // Example1:
-          // Select all the data from the data source using both Method and Query Syntax.
-          LinqSelectOperator();
-          Console.WriteLine("\n==============================");
-
-          // Example2:
-          LinqSelectOperatorEx2();
-          Console.WriteLine("\n==============================");
-
-          // Example3:
-          LinqSelectOperatorEx3();
-          Console.WriteLine("\n==============================");
-
-          // Example4:
-          LinqSelectOperatorEx4();
-          Console.WriteLine("\n==============================");
-
-          // Example5:
-          LinqSelectOperatorEx5();
-          Console.WriteLine("\n==============================");
-
-          // Example6:
-          LinqSelectOperatorEx6();
-          Console.WriteLine("\n==============================");
-
-          // Example7:
-          LinqSelectOperatorEx7();
-          Console.WriteLine("\n==============================");
-            */
-            #endregion
-
-            #region LinqBasic
-            /*
-          string sentence = "Welcome to Dotnet Tutorials";
-          int wordCount = sentence.GetWordCount();
-          Console.WriteLine($"Count : {wordCount}");
-          Console.WriteLine("\n==============================");
-
-          LinqQuerySyntax();
-          Console.WriteLine("\n==============================");
-
-          LinqMethodSyntax();
-          Console.WriteLine("\n==============================");
-
-          LinqMixedSyntax();
-          Console.WriteLine("\n==============================");
-
-          IEnumerableSyntax();
-          Console.WriteLine("\n==============================");
-
-          // C# IEnumerable with complex type
-          IEnumerableWithComplexType();
-          Console.WriteLine("\n==============================");
-
-          IQueryableWithComplexType();
-          Console.WriteLine("\n==============================");
-
-            */
-            #endregion
+            //IntersectExample();
+            OrderByExample();          
 
             Console.ReadKey();
+        }
+
+      
+        private static void IntersectExample()
+        {
+            LinqIntersect.Example1();
+            LinqIntersect.Example2();
+            LinqIntersect.Example3();
+            LinqIntersect.ComplexExample1();
+            LinqIntersect.ComplexExample2();
+            LinqIntersect.AnonymousComplexExample3();
+        }
+
+        private static void OrderByExample()
+        {
+            LinqOrderBy.Example1();
+            LinqOrderBy.ComplexOrderByEg1();
+            LinqOrderBy.ComplexOrderByEg2();
+            LinqOrderBy.LinqThenBy();
         }
 
         private static void FilterOperator2WithQuery()
@@ -647,6 +527,152 @@ namespace LinqBasics
             //Execution
             Console.Write("Sum Is : " + mixsyntax);
         }
+
+        private static void AllinOneExamples()
+        {
+            //#region Except
+            //LinqExcept.Example1();
+            //LinqExcept.Example2();
+            //LinqExcept.Example3();
+            //#endregion
+
+            //#region Linq Distinct Operators
+            //DistinctOperator.OnValueType();            
+            //DistinctOperator.OnStringType();
+            //DistinctOperator.OnStringCaseSensitive();
+            //DistinctOperator.OnObjDistinct();
+            //DistinctOperator.OnIEqualityComparer();
+            //DistinctOperator.OnOverrideCompare();
+            //#endregion
+
+            /* #region Linq Set Operators
+             LinqSetOperator.LinqDistinctMethod();
+             LinqSetOperator.LinqDistinctMethod2();
+             LinqSetOperator.LinqDistinctMethod3();
+             LinqSetOperator.LinqDistinctWithComplexType();
+             LinqSetOperator.LinqDistinctWithComplexType2();
+             #endregion
+            */
+
+            #region OfType Operator in LINQ
+            /*
+            OfTypeOperator.ExampleOne();
+            OfTypeOperator.ExampleTwo();
+            OfTypeOperator.ExampleThree();
+            */
+            #endregion
+
+            #region Filter
+            /*
+            FilterOperator();
+            Console.WriteLine("\n==============================");
+
+            FilterGenericDelegate();
+            Console.WriteLine("\n==============================");
+
+            FilterOperator2();
+            Console.WriteLine("\n==============================");
+
+            FilterOperator2WithQuery();
+            Console.WriteLine("\n==============================");
+
+            LinqComplexFilter.GetEmpWithSalaryOver50000();
+            Console.WriteLine("\n==============================");
+
+            LinqComplexFilter.GetEmpWithMaleSalaryOver50000();
+            Console.WriteLine("\n==============================");
+
+            LinqComplexFilter.GetComplexType();
+            Console.WriteLine("\n==============================");
+
+            LinqComplexFilter.FetchElementWithIndexPos();
+            Console.WriteLine("\n==============================");
+            */
+            #endregion
+
+            #region SelectMany
+            /*
+            SelectManyExample1();
+            Console.WriteLine("\n==============================");
+
+            SelectManyExample1WithQuery();
+            Console.WriteLine("\n==============================");
+
+            SelectManyExample2();
+            Console.WriteLine("\n==============================");
+
+            SelectManyExample3();
+            Console.WriteLine("\n==============================");
+
+            SelectManyExample4();
+            Console.WriteLine("\n==============================");
+
+            */
+            #endregion
+
+            #region Select Operator
+            /*
+          // Example1:
+          // Select all the data from the data source using both Method and Query Syntax.
+          LinqSelectOperator();
+          Console.WriteLine("\n==============================");
+
+          // Example2:
+          LinqSelectOperatorEx2();
+          Console.WriteLine("\n==============================");
+
+          // Example3:
+          LinqSelectOperatorEx3();
+          Console.WriteLine("\n==============================");
+
+          // Example4:
+          LinqSelectOperatorEx4();
+          Console.WriteLine("\n==============================");
+
+          // Example5:
+          LinqSelectOperatorEx5();
+          Console.WriteLine("\n==============================");
+
+          // Example6:
+          LinqSelectOperatorEx6();
+          Console.WriteLine("\n==============================");
+
+          // Example7:
+          LinqSelectOperatorEx7();
+          Console.WriteLine("\n==============================");
+            */
+            #endregion
+
+            #region LinqBasic
+            /*
+          string sentence = "Welcome to Dotnet Tutorials";
+          int wordCount = sentence.GetWordCount();
+          Console.WriteLine($"Count : {wordCount}");
+          Console.WriteLine("\n==============================");
+
+          LinqQuerySyntax();
+          Console.WriteLine("\n==============================");
+
+          LinqMethodSyntax();
+          Console.WriteLine("\n==============================");
+
+          LinqMixedSyntax();
+          Console.WriteLine("\n==============================");
+
+          IEnumerableSyntax();
+          Console.WriteLine("\n==============================");
+
+          // C# IEnumerable with complex type
+          IEnumerableWithComplexType();
+          Console.WriteLine("\n==============================");
+
+          IQueryableWithComplexType();
+          Console.WriteLine("\n==============================");
+
+            */
+            #endregion
+        }
+
     }
 
     public class Student
