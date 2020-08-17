@@ -47,8 +47,11 @@
     <Compile Include="Employee.cs" />
     <Compile Include="Employee2.cs" />
     <Compile Include="EmployeeBasicInfo.cs" />
+    <Compile Include="EmployeeData.cs" />
     <Compile Include="ExtensionHelper.cs" />
     <Compile Include="GroupByStudent.cs" />
+    <Compile Include="GroupJoinModel.cs" />
+    <Compile Include="JoinExercise.cs" />
     <Compile Include="LinqAggregate.cs" />
     <Compile Include="LinqComplexFilter.cs" />
     <Compile Include="LinqExcept.cs" />

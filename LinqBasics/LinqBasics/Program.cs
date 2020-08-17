@@ -15,15 +15,24 @@ namespace LinqBasics
             //IntersectExample();
             //OrderByExample();
             //OnLinqAggregate();
+            //OnGroupBy();
 
-            OnGroupBy();
+            OnJoin();
 
             Console.ReadKey();
         }
 
+        private static void OnJoin()
+        {
+            JoinExercise.Exercise1();
+            JoinExercise.Exercise2();
+            JoinExercise.Exercise3();
+            JoinExercise.Exercise4();
+        }
+
         private static void OnGroupBy()
         {
-            LinqGroupBy.Example2();
+            LinqGroupBy.Example3();
         }
 
         private static void OnLinqAggregate()

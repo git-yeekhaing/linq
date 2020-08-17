@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -68,6 +69,45 @@ namespace LinqBasics
             }
 
             Console.WriteLine("============Finish=============");
+        }
+      
+        //Example: The following example group the students first by Branch and then by Gender.
+        //The student groups first sorted by Branch in descending order and then by Gender in ascending order.
+        //Finally, the students in each group are sorted by their names in ascending order. 
+        public static void Example3()
+        {
+            // query method
+            var QS = from std in GroupByStudent.GetStudents()
+                     group std by new { std.Branch, std.Gender } into stdGrp
+                     orderby stdGrp.Key.Branch descending,
+                     stdGrp.Key.Gender ascending
+                     select new
+                     {
+                         Branch = stdGrp.Key.Branch,
+                         Gender = stdGrp.Key.Gender,
+                         Students = stdGrp.OrderBy(x => x.Name)
+                     };
+
+            var MS = GroupByStudent.GetStudents()
+                    .GroupBy(x => new { x.Branch, x.Gender })
+                    .OrderByDescending(g => g.Key.Branch).ThenBy(g => g.Key.Gender)
+                    .Select(g => new
+                    {
+                        Branch = g.Key.Branch,
+                        Gender = g.Key.Gender,
+                        GroupByStudent = g.OrderBy(x => x.Name)
+                    });
+
+            foreach(var grp in QS)
+            {
+                Console.WriteLine($"Barnch : {grp.Branch} Gender: {grp.Gender} No of Students = {grp.Students.Count()}");
+
+                foreach (var std in grp.Students)
+                {
+                    Console.WriteLine($"  ID: {std.ID}, Name: {std.Name}, Age: {std.Age} ");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
